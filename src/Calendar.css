@@ -1,0 +1,567 @@
+/* ====================== */
+/* SHARED STYLES */
+/* ====================== */
+:root {
+  /* Category Colors (new) */
+  --category-appointment: #660033;
+  --category-task: #007ba7;
+  --category-event: #e83256;
+  --category-appointment-light: color-mix(
+    in srgb,
+    var(--category-appointment),
+    white 20%
+  );
+  --category-task-light: color-mix(in srgb, var(--category-task), white 20%);
+  --category-event-light: color-mix(in srgb, var(--category-event), white 20%);
+
+  /* Layout */
+  --cell-height: 75px;
+  --mobile-cell-height: 60px;
+}
+
+/* Shared Event Styles */
+.event-item {
+  font-size: 0.8rem;
+  padding: 6px 8px;
+  margin-bottom: 6px;
+  border-radius: 4px;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.event-time {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--whhite);
+  margin-bottom: 2px;
+}
+
+/* Category Colors */
+.event-item.appointment {
+  background: var(--category-appointment-light);
+  border-left: 3px solid var(--category-appointment);
+  color: white;
+}
+
+.event-item.task {
+  background: var(--category-task-light);
+  border-left: 3px solid var(--category-task);
+  color: white;
+}
+
+.event-item.event {
+  background: var(--category-event-light);
+  border-left: 3px solid var(--category-event);
+  color: white;
+}
+
+.more-events {
+  font-size: 0.7rem;
+  padding: 2px 4px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+  color: var(--text-light);
+  cursor: pointer;
+}
+
+/* ====================== */
+/* MONTH VIEW STYLES */
+/* ====================== */
+.month-view .day-events {
+  flex: 1;
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+/* Simplified Event Items */
+.month-view .event-item {
+  font-size: 0.7rem;
+  padding: 2px 4px;
+  margin-bottom: 2px;
+  border-radius: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-left-width: 2px;
+}
+
+.month-view .event-time {
+  display: none; /* Hide time in month view */
+}
+
+/* Even more compact view when many events */
+.month-view .more-events {
+  font-size: 0.6rem;
+  padding: 1px 3px;
+  margin-top: 2px;
+}
+
+.month-view {
+  background: white;
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: var(--space-md);
+}
+
+.month-view .calendar-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.month-view .react-calendar {
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+}
+
+.month-view .react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+  padding: 0 var(--space-sm);
+}
+
+.month-view .react-calendar__navigation__label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark);
+  background: none;
+  border: none;
+  padding: var(--space-xs) var(--space-sm);
+  min-width: 150px;
+}
+
+.month-view .react-calendar__navigation__arrow {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--text);
+  padding: var(--space-xs) var(--space-sm);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.month-view .react-calendar__navigation__arrow:hover {
+  background: var(--border-color);
+}
+
+.month-view .react-calendar__month-view__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: var(--space-sm);
+  text-align: center;
+}
+
+.month-view .react-calendar__month-view__weekdays__weekday {
+  padding: var(--space-xs) 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+.month-view .react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none;
+}
+
+.month-view .react-calendar__tile {
+  height: var(--cell-height);
+  padding: 4px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  background: white;
+  transition: background 0.2s ease;
+}
+
+.month-view .react-calendar__tile:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.month-view .react-calendar__tile abbr {
+  display: block;
+  text-align: right;
+  width: 100%;
+  padding: 2px 4px 2px 0;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+.month-view .react-calendar__tile--now {
+  background-color: rgba(58, 134, 255, 0.1);
+}
+
+.month-view .react-calendar__tile--now abbr {
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.month-view .react-calendar__tile--active {
+  background: var(--accent-light);
+}
+
+.month-view .react-calendar__tile--active abbr {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.month-view .day-events {
+  flex: 1;
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+/* Adjacent month days styling */
+.month-view .react-calendar__month-view__days__day--neighboringMonth {
+  opacity: 0.5;
+}
+
+.month-view .react-calendar__month-view__days__day--neighboringMonth abbr {
+  color: var(--text-light);
+}
+/* ====================== */
+/* WEEK VIEW FIXES */
+/* ====================== */
+
+.week-view .calendar-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+  gap: var(--space-md);
+}
+
+.week-view .week-view-title {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--dark);
+}
+
+.week-view .week-nav-buttons {
+  display: flex;
+  gap: var(--space-sm);
+  margin-left: auto;
+}
+
+/* Grid Structure */
+.week-view .week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  min-height: 500px;
+  border-radius: var(--card-radius);
+  gap: 1px;
+  background: var(--border-color);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+/* Day Columns */
+.week-view .day-column {
+  background: white;
+  padding: var(--space-xs);
+  position: relative;
+}
+
+.week-view .day-column:last-child {
+  border-right: none;
+}
+
+/* Day Header */
+.week-view .day-header {
+  padding: var(--space-sm);
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: var(--space-sm);
+}
+
+/* Date Styling */
+.week-view .date {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+/* Events */
+.week-view .day-events {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.week-view .event-item {
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  position: relative;
+  padding-left: 10px;
+  font-size: 0.7rem;
+}
+
+.week-view .event-item.appointment::before {
+  background: var(--category-appointment);
+}
+
+.week-view .event-item.task::before {
+  background: var(--category-task);
+}
+
+.week-view .event-item.event::before {
+  background: var(--category-event);
+}
+
+/* Current Day Highlight */
+.week-view .current-day {
+  background: rgba(58, 134, 255, 0.05);
+}
+
+.week-view .current-day .date {
+  color: var(--accent);
+}
+
+/* ====================== */
+/* SCHEDULE VIEW STYLES */
+/* ====================== */
+
+.schedule-view .event-card {
+  padding: 0.05rem;
+  margin-bottom: var(--space-xs);
+  position: relative;
+  padding-left: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.schedule-view .event-card:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Schedule View Event Layout */
+.schedule-view .event-details {
+  display: flex;
+  gap: var(--space-xs);
+  align-items: center;
+}
+
+.schedule-view .event-time,
+.schedule-view .event-date {
+  min-width: 60px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--text);
+  padding-left: 5%;
+}
+
+/* Category Indicator */
+.schedule-view .event-category-indicator {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* Category Colors */
+.schedule-view .appointment .event-category-indicator {
+  background: var(--category-appointment);
+}
+
+.schedule-view .task .event-category-indicator {
+  background: var(--category-task);
+}
+
+.schedule-view .event .event-category-indicator {
+  background: var(--category-event);
+}
+
+.schedule-view .no-events {
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* ======================== */
+/* RESPONSIVE ADJUSTMENTS */
+/* ======================== */
+@media (max-width: 768px) {
+  .month-view .react-calendar__tile {
+    height: var(--mobile-cell-height);
+  }
+
+  .week-view .week-grid {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .week-view .day-column {
+    min-height: 120px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+}
+
+/* ===== MONTH VIEW MOBILE ADJUSTMENTS ===== */
+
+@media (max-width: 768px) {
+  /* Cell Sizing */
+  .month-view .react-calendar__tile {
+    height: var(--mobile-cell-height);
+    min-height: 70px;
+    padding: 2px;
+  }
+
+  /* Event Items */
+  .month-view .event-item {
+    font-size: 0.65rem;
+    padding: 2px 3px;
+    margin-bottom: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .month-view .more-events {
+    font-size: 0.55rem;
+    padding: 1px 2px;
+  }
+
+  /* Header/Navigation */
+  .month-view .react-calendar__navigation {
+    margin-bottom: 8px;
+  }
+
+  .month-view .react-calendar__navigation__label {
+    font-size: 0.9rem;
+    min-width: 120px;
+  }
+
+  .month-view .react-calendar__navigation__arrow {
+    padding: 4px 6px;
+    font-size: 1rem;
+  }
+
+  /* Weekday Headers */
+  .month-view .react-calendar__month-view__weekdays__weekday {
+    padding: 4px 0;
+    font-size: 0.7rem;
+  }
+
+  /* Adjacent Month Days */
+  .month-view .react-calendar__month-view__days__day--neighboringMonth {
+    opacity: 0.3;
+  }
+}
+
+/* Smaller phones */
+@media (max-width: 480px) {
+  .month-view .react-calendar__tile {
+    height: 60px;
+  }
+
+  .month-view .react-calendar__navigation__label {
+    font-size: 0.8rem;
+  }
+}
+
+/* ===== WEEK VIEW MOBILE FIXES ===== */
+
+@media (max-width: 768px) {
+  /* Convert to vertical layout */
+  .week-view .week-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 0;
+  }
+
+  .week-view .day-column {
+    min-height: 120px;
+    border-bottom: 1px solid var(--border-color);
+    border-right: none;
+  }
+
+  /* Compact day headers */
+  .week-view .day-header {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .week-view .date {
+    font-size: 1rem;
+  }
+
+  /* Event items */
+  .week-view .event-item {
+    font-size: 0.7rem;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Current day highlight */
+  .week-view .current-day {
+    background: rgba(58, 134, 255, 0.08);
+  }
+}
+
+/* Smaller phones */
+@media (max-width: 480px) {
+  .week-view .day-column {
+    min-height: 100px;
+  }
+
+  .week-view .event-item {
+    font-size: 0.65rem;
+  }
+}
+
+/* ===== SCHEDULE VIEW MOBILE FIXES ===== */
+
+@media (max-width: 768px) {
+  .schedule-view .event-card {
+    padding: 0.5rem 0.75rem 0.5rem 1.5rem;
+    position: relative;
+  }
+
+  .schedule-view .event-details {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  /* Time/Date adjustments */
+  .schedule-view .event-time,
+  .schedule-view .event-date {
+    min-width: 45px;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+  }
+
+  /* Title adjustments */
+  .schedule-view .event-title {
+    flex: 1;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 8px;
+  }
+
+  /* Category indicator positioning */
+  .schedule-view .event-category-indicator {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+  }
+}
