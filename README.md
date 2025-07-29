@@ -11,6 +11,7 @@ A React-based personal event organizer with user authentication and different ca
 - **User authentication**: Register/login with validation
 
 ## Main project structure
+```
 src/
 ├── assets/ # Static assets
 ├── components/ # Reusable components (MonthView, EventsFormModal, etc.)
@@ -22,6 +23,7 @@ src/
 ├── Calendar.css # Calendar-specific styles
 ├── index.css # Global base styles
 └── main.jsx # Entry point
+```
 
 ## Technologies used
 - React
@@ -31,7 +33,7 @@ src/
 - React Router
 
 ## Installation
-```bash
+```
 # Clone the repository
 git clone https://github.com/kristinmiller95/event-planner-capstone.git
 
