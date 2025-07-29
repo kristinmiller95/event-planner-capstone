@@ -1,12 +1,48 @@
-# React + Vite
+# Chronicle Event Planner - Hyperion Capstone Project Level 2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based personal event organizer with user authentication and different calender views. Built with React, Vite and Context API.
 
-Currently, two official plugins are available:
+## Features
+- **Multiple views**: Schedule, Week, and Month calendar displays
+- **Event management**: Add, edit, or delete events with details
+- **Event categorization**: Classify as event, task, or appointment
+- **Fully responsive**: Works on desktop and mobile
+- **State management**: Context API for shared state
+- **User authentication**: Register/login with validation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Main project structure
+src/
+├── assets/ # Static assets
+├── components/ # Reusable components (MonthView, EventsFormModal, etc.)
+├── context/ # Auth and Events contexts
+├── data/ # Mock data for development
+├── pages/ # Web app pages/screens
+├── routes/ # Application routing logic
+├── App.css # Component styles
+├── Calendar.css # Calendar-specific styles
+├── index.css # Global base styles
+└── main.jsx # Entry point
 
-## Expanding the ESLint configuration
+## Technologies used
+- React
+- Vite
+- CSS Modules
+- Context API
+- React Router
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Installation
+```bash
+# Clone the repository
+git clone https://github.com/kristinmiller95/event-planner-capstone.git
+
+# Navigate to project directory
+cd event-planner-capstone
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+Open in browser: http://localhost:5173
